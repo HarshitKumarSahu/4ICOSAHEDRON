@@ -19,7 +19,6 @@ float hash1(vec3 p3) {
     return fract(p3.x * p3.y * p3.z);
 }
 
-
 vec4 noised( in vec3 x )
 {
     vec3 p = floor(x);
@@ -57,7 +56,6 @@ vec4 noised( in vec3 x )
         )
     );
 }
-
 
 void main() {
     vUv = uv;

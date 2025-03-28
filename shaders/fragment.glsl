@@ -10,8 +10,6 @@ varying float vNoise;
 float PI = 3.141592653589793238;
 
 void main() {
-    // vec2 newUV = (vUv - vec2(0.5)) * resolution.zw
-
     vec3 X = dFdx(vPosition);
     vec3 Y = dFdy(vPosition);
     vec3 n = normalize(cross(X,Y)); 
