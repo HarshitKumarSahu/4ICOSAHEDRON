@@ -11,8 +11,7 @@ const camera = new THREE.PerspectiveCamera(
     0.1, 
     1000 
 );
-camera.position.z = window.innerWidth > 600 ? 5 : 7; // Larger distance for smaller screens
-
+camera.position.z = window.innerWidth > 600 ? 5 : 7; 
 
 const canvas = document.querySelector(".canvas")
 const renderer = new THREE.WebGLRenderer({
@@ -26,55 +25,40 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 const geometry = new THREE.IcosahedronGeometry(2, 7);
 const edgeGeo = new THREE.EdgesGeometry(geometry);
 
+const uniforms = {
+    time: { type: "f", value: 0 },
+    playhead: { type: "f", value: 0 },
+    resolution: { type: "v4", value: new THREE.Vector4() },
+    uvRate1: { value: new THREE.Vector2(1, 1) }
+}
+
 // Setup a material
 const material = new THREE.ShaderMaterial({
     extensions: {
         derivatives: "#extension GL_OES_standard_derivatives : enable"
     },
     side: THREE.DoubleSide,
-    uniforms: {
-        time: { type: "f", value: 0 },
-        playhead: { type: "f", value: 0 },
-        resolution: { type: "v4", value: new THREE.Vector4() },
-        uvRate1: { value: new THREE.Vector2(1, 1) }
-    },
-    vertexShader: vertex, // Correct position
-    fragmentShader: fragment, // Correct position
-    // wireframe: true,
-    // transparent: true
+    uniforms : uniforms,
+    vertexShader: vertex,
+    fragmentShader: fragment, 
 });
-  const material1 = new THREE.ShaderMaterial({
+const material1 = new THREE.ShaderMaterial({
     extensions: {
         derivatives: "#extension GL_OES_standard_derivatives : enable"
     },
     side: THREE.DoubleSide,
-    uniforms: {
-        time: { type: "f", value: 0 },
-        playhead: { type: "f", value: 0 },
-        resolution: { type: "v4", value: new THREE.Vector4() },
-        uvRate1: { value: new THREE.Vector2(1, 1) }
-    },
-    vertexShader: vertex, // Correct position
-    fragmentShader: fragmentLine, // Correct position
-    // wireframe: true,
-    // transparent: true
+    uniforms : uniforms,
+    vertexShader: vertex, 
+    fragmentShader: fragmentLine, 
 });
-  
-  const material2 = new THREE.ShaderMaterial({
+const material2 = new THREE.ShaderMaterial({
     extensions: {
         derivatives: "#extension GL_OES_standard_derivatives : enable"
     },
     side: THREE.DoubleSide,
-    uniforms: {
-        time: { type: "f", value: 0 },
-        playhead: { type: "f", value: 0 },
-        resolution: { type: "v4", value: new THREE.Vector4() },
-        uvRate1: { value: new THREE.Vector2(1, 1) }
-    },
-    vertexShader: vertex, // Correct position
-    fragmentShader: fragmentLine, // Correct position
-    // wireframe: true,
-    // transparent: true
+    uniforms : uniforms,
+    vertexShader: vertex,
+    fragmentShader: fragmentLine, 
 });
 
 // Setup a mesh with geometry + material
