@@ -1,7 +1,16 @@
+@font-face {
+  font-family: first;
+  src: url(/font/file.woff2);
+}
+@font-face {
+  font-family: astro;
+  src: url(/font/Astro.ttf);
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: astro;
 }
 html,body {
   height: 100%;
@@ -10,7 +19,7 @@ html,body {
 .main {
   width: 100%;
   height: 100%;
-  background-color: black;
+  background-color: #27272A;
 }
 .canvas {
   position: fixed;
@@ -18,5 +27,61 @@ html,body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #27272A;
+}
+nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 1vw 3vw;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+a {
+  text-decoration: none;
+  font-size: 1.5vw;
+  letter-spacing: 5px;
+  background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* font-weight: 900; */
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0 3vw;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+footer .note {
+  font-size: 1vw;
+}
+
+@media screen and (max-width:600px) {
+  nav {
+    padding: 6vw 5vw;
+  }
+  a {
+    font-size: 5vw;
+    letter-spacing: 0;
+  }
+  footer {
+    padding: 5vw;
+  }
+  footer .note {
+    font-size: 3vw;
+  }
+  footer a {
+    display: none;
+  }
+  footer .note {
+    font-size: 4vw;
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
 }
